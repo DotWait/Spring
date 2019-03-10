@@ -4,9 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- the factory bean, which contains a method called createInstance() -->
-    <bean id="clientService"
-          class="com.dotwait.service.ClientService"
-          factory-method="createInstance"/>
+    <bean id="clientService" class="com.dotwait.service.ClientService" factory-method="createInstance"/>
+
 
     <!-- the factory bean, which contains a method called createInstance() -->
     <bean id="serviceLocator" class="com.dotwait.service.DefaultServiceLocator">
@@ -17,5 +16,6 @@
     <bean id="messageService"
           factory-bean="serviceLocator"
           factory-method="createMessageServiceInstance"/>
+
 
 </beans>
