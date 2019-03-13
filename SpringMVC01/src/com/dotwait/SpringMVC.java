@@ -1,5 +1,7 @@
 package com.dotwait;
 
+import com.dotwait.dependencyinjection.ExampleBean;
+import com.dotwait.dependencyinjection.ThingOne;
 import com.dotwait.service.ClientService;
 import com.dotwait.service.MessageService;
 import org.springframework.context.ApplicationContext;
@@ -12,5 +14,10 @@ public class SpringMVC {
         clientService.show();
         MessageService messageService = applicationContext.getBean("messageService", MessageService.class);
         messageService.show();
+        ThingOne beanOne = applicationContext.getBean("beanOne", ThingOne.class);
+        beanOne.showTwoAndThree();
+        ExampleBean exampleBean = applicationContext.getBean("exampleBean", ExampleBean.class);
+        exampleBean.show();
+        exampleBean.printThreeProperties();
     }
 }

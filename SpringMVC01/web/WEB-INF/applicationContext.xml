@@ -18,4 +18,45 @@
           factory-bean="serviceLocator"
           factory-method="createMessageServiceInstance"/>
 
+    <bean id="beanOne" class="com.dotwait.dependencyinjection.ThingOne">
+        <constructor-arg ref="beanTwo"></constructor-arg>
+        <constructor-arg ref="beanThree"></constructor-arg>
+    </bean>
+
+    <bean id="beanTwo" class="com.dotwait.dependencyinjection.ThingTwo"></bean>
+
+    <bean id="beanThree" class="com.dotwait.dependencyinjection.ThingThree"></bean>
+
+    <!--Constructor argument type matching-->
+<!--    <bean id="exampleBean" class="com.dotwait.dependencyinjection.ExampleBean">
+        <constructor-arg type="int" value="7500000"/>
+        <constructor-arg type="java.lang.String" value="42"/>
+    </bean>-->
+    <!--Constructor argument index-->
+<!--    <bean id="exampleBean" class="com.dotwait.dependencyinjection.ExampleBean">
+        <constructor-arg index="0" value="7500000"/>
+        <constructor-arg index="1" value="42"/>
+    </bean>-->
+    <!--Constructor argument name-->
+<!--    <bean id="exampleBean" class="com.dotwait.dependencyinjection.ExampleBean">
+        <constructor-arg name="years" value="7500000"/>
+        <constructor-arg name="ultimateAnswer" value="42"/>
+    </bean>-->
+
+    <bean id="exampleBean" class="com.dotwait.dependencyinjection.ExampleBean">
+        <constructor-arg name="years" value="7500000"/>
+        <constructor-arg name="ultimateAnswer" value="42"/>
+        <!-- setter injection using the nested ref element -->
+        <property name="anotherBean">
+            <ref bean="anotherBean"></ref>
+        </property>
+
+        <!-- setter injection using the neater ref attribute -->
+        <property name="yetAnotherBean" ref="yetAnotherBean"/>
+        <property name="i" value="1"/>
+    </bean>
+
+    <bean id="anotherBean" class="com.dotwait.dependencyinjection.AnotherBean"></bean>
+
+    <bean id="yetAnotherBean" class="com.dotwait.dependencyinjection.YetAnotherBean"></bean>
 </beans>
